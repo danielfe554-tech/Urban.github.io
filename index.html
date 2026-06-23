@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UrbanCustom - Tienda de Ropa Personalizada</title>
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container" id="btn-home">
+        <!-- Logo Image or SVG Fallback -->
+        <div class="logo-wrapper">
+          <img src="logo.png" alt="UrbanCustom Logo" id="logo-img" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex'">
+          <div class="logo-fallback-icon" id="logo-fallback">
+            <!-- SVG fallback similar to the user's logo -->
+            <svg viewBox="0 0 100 100" class="logo-svg">
+              <path d="M20,25 C20,70 80,70 80,25" fill="none" stroke="url(#logo-grad)" stroke-width="12" stroke-linecap="round"/>
+              <path d="M20,25 L10,23 C8,15 15,10 25,12 L30,22 Z" fill="#121214"/>
+              <path d="M80,25 L90,23 C92,15 85,10 75,12 L70,22 Z" fill="#121214"/>
+              <!-- Drips -->
+              <path d="M20,40 C18,50 24,55 24,60 C24,65 18,65 18,55 Z" fill="#ff0044"/>
+              <path d="M30,55 C28,68 36,70 36,78 C36,83 28,82 28,70 Z" fill="#ff0044"/>
+              <path d="M70,55 C72,68 64,70 64,78 C64,83 72,82 72,70 Z" fill="#ff0044"/>
+              <path d="M80,40 C82,50 76,55 76,60 C76,65 82,65 82,55 Z" fill="#ff0044"/>
+              <!-- Hanger -->
+              <path d="M50,42 L35,58 L65,58 Z" fill="none" stroke="#fff" stroke-width="2.5"/>
+              <path d="M50,42 C50,38 53,35 53,38" fill="none" stroke="#fff" stroke-width="2.5"/>
+              <!-- Star -->
+              <path d="M50,5 L53,13 L61,10 L56,17 L64,19 L56,22 L60,30 L52,25 L50,33 L48,25 L40,30 L44,22 L36,19 L44,17 L39,10 L47,13 Z" fill="#ff0044"/>
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ff0044" />
+                  <stop offset="100%" stop-color="#7a001e" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+        <span class="logo-text">Urban<span>Custom</span></span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#" class="nav-link active" data-target="landing">Inicio</a>
+        <a href="#" class="nav-link" data-target="customizer" id="nav-customizer">Personalizar</a>
+        <a href="#" class="nav-link" data-target="cart-link" id="nav-cart">Carrito</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="cart-trigger" id="cart-btn" aria-label="Ver carrito">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-count" id="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Screens Wrapper -->
+  <main class="main-content">
+    
+    <!-- 1. LANDING SCREEN -->
+    <section id="screen-landing" class="screen active">
+      <div class="hero-section">
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+          <span class="badge">Estilo Urbano Personalizado</span>
+          <h1>Viste tu Identidad, <br><span class="gradient-text">Sin Límites</span></h1>
+          <p class="hero-subtitle">Diseña tus propios busos, camisas, camisetas y polos. Colores ilimitados, textos personalizables e imágenes propias con nuestro editor interactivo en tiempo real.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-glow" id="hero-cta">Comenzar a Diseñar</button>
+            <a href="#productos" class="btn btn-secondary">Ver Catálogo</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories Catalog -->
+      <div class="catalog-section" id="productos">
+        <div class="section-header">
+          <h2>Elige tu Lienzo</h2>
+          <p>Selecciona una de nuestras prendas premium de algodón de alta densidad para empezar a personalizar.</p>
+        </div>
+
+        <div class="catalog-grid">
+          <!-- Hoodie Card -->
+          <div class="product-card" data-garment="hoodie">
+            <div class="card-glow"></div>
+            <div class="card-img-container">
+              <div class="card-svg-preview" id="preview-hoodie"></div>
+            </div>
+            <div class="card-info">
+              <h3>Buso / Hoodie</h3>
+              <p>Capucha con cordones, bolsillo canguro y algodón perchado premium.</p>
+              <div class="card-footer">
+                <span class="price">$45.000 COP</span>
+                <button class="btn btn-icon-start btn-sm"><i data-lucide="paint-brush"></i> Personalizar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shirt Card -->
+          <div class="product-card" data-garment="shirt">
+            <div class="card-glow"></div>
+            <div class="card-img-container">
+              <div class="card-svg-preview" id="preview-shirt"></div>
+            </div>
+            <div class="card-info">
+              <h3>Camisa Casual</h3>
+              <p>Corte moderno, botones premium, manga larga y cuello estructurado.</p>
+              <div class="card-footer">
+                <span class="price">$38.000 COP</span>
+                <button class="btn btn-icon-start btn-sm"><i data-lucide="paint-brush"></i> Personalizar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- T-Shirt Card -->
+          <div class="product-card" data-garment="tshirt">
+            <div class="card-glow"></div>
+            <div class="card-img-container">
+              <div class="card-svg-preview" id="preview-tshirt"></div>
+            </div>
+            <div class="card-info">
+              <h3>Camiseta Streetwear</h3>
+              <p>Cuello redondo, ajuste oversized, algodón 100% transpirable.</p>
+              <div class="card-footer">
+                <span class="price">$25.000 COP</span>
+                <button class="btn btn-icon-start btn-sm"><i data-lucide="paint-brush"></i> Personalizar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Polo Card -->
+          <div class="product-card" data-garment="polo">
+            <div class="card-glow"></div>
+            <div class="card-img-container">
+              <div class="card-svg-preview" id="preview-polo"></div>
+            </div>
+            <div class="card-info">
+              <h3>Camisa Polo</h3>
+              <p>Cuello de punto clásico, solapa de 2 botones, puños acanalados.</p>
+              <div class="card-footer">
+                <span class="price">$32.000 COP</span>
+                <button class="btn btn-icon-start btn-sm"><i data-lucide="paint-brush"></i> Personalizar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. CUSTOMIZER SCREEN -->
+    <section id="screen-customizer" class="screen">
+      <div class="customizer-layout">
+        <!-- Control Panel (Left) -->
+        <aside class="control-panel glass-panel">
+          <div class="panel-tabs">
+            <button class="panel-tab active" data-tab="colors"><i data-lucide="palette"></i> Colores</button>
+            <button class="panel-tab" data-tab="text"><i data-lucide="type"></i> Texto</button>
+            <button class="panel-tab" data-tab="graphics"><i data-lucide="image"></i> Gráficos</button>
+          </div>
+
+          <!-- Color Control Tab -->
+          <div class="tab-content active" id="tab-colors">
+            <h3>Colores de la Prenda</h3>
+            <p class="tab-description">Elige una parte de la prenda y su color.</p>
+            
+            <div class="color-picker-group">
+              <label>Cuerpo</label>
+              <div class="color-palette" data-target-part="body">
+                <!-- Color dots added by JS -->
+              </div>
+            </div>
+
+            <div class="color-picker-group">
+              <label>Mangas</label>
+              <div class="color-palette" data-target-part="sleeves">
+                <!-- Color dots added by JS -->
+              </div>
+            </div>
+
+            <div class="color-picker-group">
+              <label>Cuello / Detalles</label>
+              <div class="color-palette" data-target-part="collar">
+                <!-- Color dots added by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Text Control Tab -->
+          <div class="tab-content" id="tab-text">
+            <h3>Añadir Texto</h3>
+            
+            <div class="form-group">
+              <input type="text" id="text-input" placeholder="Escribe tu texto aquí..." maxlength="40">
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Fuente</label>
+                <select id="text-font">
+                  <option value="Outfit" style="font-family: 'Outfit'">Outfit</option>
+                  <option value="Impact" style="font-family: 'Impact'">Impact</option>
+                  <option value="Courier New" style="font-family: 'Courier New'">Retro Tech</option>
+                  <option value="'Brush Script MT', cursive" style="font-family: 'Brush Script MT', cursive">Script</option>
+                  <option value="'Inter', sans-serif" style="font-family: 'Inter'">Sencilla</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Color</label>
+                <div class="text-color-picker-container">
+                  <input type="color" id="text-color" value="#ffffff">
+                  <span class="color-hex-label" id="text-color-label">#ffffff</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-secondary btn-full btn-icon-start" id="btn-add-text">
+              <i data-lucide="plus"></i> Añadir al Diseño
+            </button>
+
+            <div class="layer-actions-container hide" id="text-layer-controls">
+              <h4>Ajustes de Capa Activa</h4>
+              <div class="layer-control-buttons">
+                <button class="btn btn-sm btn-icon" id="btn-text-bold" title="Negrita"><i data-lucide="bold"></i></button>
+                <button class="btn btn-sm btn-icon" id="btn-text-italic" title="Cursiva"><i data-lucide="italic"></i></button>
+                <button class="btn btn-sm btn-danger btn-icon" id="btn-delete-layer" title="Eliminar Capa"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Graphics Control Tab -->
+          <div class="tab-content" id="tab-graphics">
+            <h3>Subir Logo / Imagen</h3>
+            <p class="tab-description">Sube un archivo PNG con fondo transparente para un mejor resultado.</p>
+            
+            <div class="upload-dropzone" id="upload-zone">
+              <input type="file" id="image-upload" accept="image/png, image/jpeg, image/webp" class="hide">
+              <i data-lucide="upload-cloud" class="upload-icon"></i>
+              <p>Arrastra tu imagen o <span>búscala en tu equipo</span></p>
+              <span class="file-limits">Soporta PNG, JPG (Máx 5MB)</span>
+            </div>
+
+            <div class="layer-actions-container hide" id="image-layer-controls">
+              <h4>Ajustes de Imagen Activa</h4>
+              <div class="layer-control-buttons">
+                <button class="btn btn-sm btn-danger btn-icon" id="btn-delete-img-layer" title="Eliminar Imagen"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Canvas Area (Center) -->
+        <div class="canvas-area">
+          <div class="view-indicator" id="current-garment-title">Buso / Hoodie</div>
+          
+          <div class="canvas-workspace">
+            <div class="garment-card-3d" id="garment-card-3d">
+              <!-- Vista Delantera (Frente) -->
+              <div class="garment-face garment-front">
+                <div class="garment-wrapper" id="garment-render-container-front"></div>
+                <div class="elements-canvas-overlay" id="canvas-overlay-front"></div>
+              </div>
+              <!-- Vista Trasera (Espalda) -->
+              <div class="garment-face garment-back">
+                <div class="garment-wrapper" id="garment-render-container-back"></div>
+                <div class="elements-canvas-overlay" id="canvas-overlay-back"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- View Controls (Front/Back) -->
+          <div class="view-controls">
+            <button class="view-btn active" id="btn-view-front">
+              <i data-lucide="eye"></i> Frente
+            </button>
+            <button class="view-btn" id="btn-view-back">
+              <i data-lucide="eye"></i> Espalda
+            </button>
+          </div>
+        </div>
+
+        <!-- Customization Summary (Right) -->
+        <aside class="summary-panel glass-panel">
+          <h3>Resumen del Diseño</h3>
+          
+          <div class="summary-item">
+            <span class="label">Prenda Base:</span>
+            <span class="val" id="summary-garment-name">Buso / Hoodie</span>
+          </div>
+
+          <div class="summary-item">
+            <span class="label">Precio Base:</span>
+            <span class="val" id="summary-base-price">$45.000 COP</span>
+          </div>
+
+          <div class="summary-item">
+            <span class="label">Adicionales (Personalización):</span>
+            <span class="val text-accent" id="summary-custom-price">$0 COP</span>
+          </div>
+
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <label for="garment-size">Elige tu Talla</label>
+            <div class="size-selector">
+              <button class="size-btn" data-size="S">S</button>
+              <button class="size-btn active" data-size="M">M</button>
+              <button class="size-btn" data-size="L">L</button>
+              <button class="size-btn" data-size="XL">XL</button>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 1.5rem;">
+            <label for="garment-qty">Cantidad</label>
+            <div class="qty-selector">
+              <button class="qty-btn" id="btn-qty-dec">-</button>
+              <input type="number" id="garment-qty" value="1" min="1" max="99">
+              <button class="qty-btn" id="btn-qty-inc">+</button>
+            </div>
+          </div>
+
+          <div class="total-price-box">
+            <span class="total-label">Total</span>
+            <span class="total-amount" id="summary-total-price">$45.000 COP</span>
+          </div>
+
+          <button class="btn btn-primary btn-full btn-glow btn-icon-start" id="btn-add-to-cart">
+            <i data-lucide="shopping-cart"></i> Añadir al Carrito
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 3. CART SCREEN -->
+    <section id="screen-cart" class="screen">
+      <div class="cart-container">
+        <h2>Tu Carrito</h2>
+        
+        <div class="cart-layout">
+          <!-- Cart Items List -->
+          <div class="cart-items-wrapper" id="cart-items-list">
+            <!-- Dynamic Cart Items injected here -->
+          </div>
+
+          <!-- Order Summary Side Panel -->
+          <aside class="cart-summary glass-panel">
+            <h3>Detalle de Compra</h3>
+            
+            <div class="summary-details">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0 COP</span>
+              </div>
+              <div class="summary-row">
+                <span>Envío (Nacional)</span>
+                <span class="text-accent" id="cart-shipping">¡Gratis!</span>
+              </div>
+              <div class="summary-row total-row">
+                <span>Total</span>
+                <span id="cart-total">$0 COP</span>
+              </div>
+            </div>
+
+            <div class="cart-actions">
+              <button class="btn btn-primary btn-full btn-glow btn-icon-start" id="btn-goto-checkout">
+                <i data-lucide="credit-card"></i> Ir a Pagar
+              </button>
+              <button class="btn btn-secondary btn-full" id="btn-continue-shopping">
+                Seguir Diseñando
+              </button>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CHECKOUT SCREEN -->
+    <section id="screen-checkout" class="screen">
+      <div class="checkout-wrapper">
+        <div class="checkout-layout">
+          <!-- Payment Form -->
+          <div class="payment-form-container glass-panel">
+            <div class="checkout-header">
+              <h2>Información de Pago</h2>
+              <span class="provider-badge"><i data-lucide="shield-check"></i> Pago Seguro</span>
+            </div>
+
+            <form id="payment-form" class="payment-form">
+              <!-- Customer Info -->
+              <h3 class="form-section-title">Datos de Envío</h3>
+              
+              <div class="form-group">
+                <label for="shipping-name">Nombre Completo</label>
+                <input type="text" id="shipping-name" placeholder="Juan Pérez" required>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="shipping-email">Correo Electrónico</label>
+                  <input type="email" id="shipping-email" placeholder="juan@correo.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="shipping-phone">Teléfono / Celular</label>
+                  <input type="tel" id="shipping-phone" placeholder="3001234567" required>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="shipping-address">Dirección de Entrega</label>
+                  <input type="text" id="shipping-address" placeholder="Calle 100 # 15-20 Apto 402" required>
+                </div>
+                <div class="form-group">
+                  <label for="shipping-city">Ciudad</label>
+                  <input type="text" id="shipping-city" placeholder="Bogotá D.C." required>
+                </div>
+              </div>
+
+              <!-- Credit Card Info -->
+              <h3 class="form-section-title" style="margin-top: 2rem;">Datos de Tarjeta</h3>
+              
+              <div class="form-group">
+                <label for="card-number">Número de Tarjeta</label>
+                <div class="input-icon-wrapper">
+                  <i data-lucide="credit-card" class="input-icon"></i>
+                  <input type="text" id="card-number" placeholder="4000 1234 5678 9010" maxlength="19" required>
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="card-expiry">Fecha de Vencimiento</label>
+                  <input type="text" id="card-expiry" placeholder="MM/AA" maxlength="5" required>
+                </div>
+                <div class="form-group">
+                  <label for="card-cvc">CVC / CVV</label>
+                  <input type="password" id="card-cvc" placeholder="123" maxlength="4" required>
+                </div>
+              </div>
+
+              <!-- Error Box -->
+              <div class="payment-error hide" id="payment-error-msg">
+                <i data-lucide="alert-circle"></i>
+                <span>Por favor revisa los datos de la tarjeta de crédito.</span>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-full btn-glow btn-icon-start" id="btn-pay-now">
+                <span id="pay-btn-spinner" class="spinner hide"></span>
+                <span id="pay-btn-text"><i data-lucide="lock"></i> Pagar <span id="checkout-amount-pay"></span></span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Checkout Order Review -->
+          <div class="checkout-review glass-panel">
+            <h3>Resumen del Pedido</h3>
+            <div class="checkout-review-items" id="checkout-items-list">
+              <!-- Injected by JS -->
+            </div>
+            
+            <div class="checkout-total-breakdown">
+              <div class="breakdown-row">
+                <span>Subtotal</span>
+                <span id="checkout-subtotal">$0 COP</span>
+              </div>
+              <div class="breakdown-row">
+                <span>Envío</span>
+                <span class="text-accent">Gratis</span>
+              </div>
+              <div class="breakdown-row total">
+                <span>Total a Pagar</span>
+                <span id="checkout-total">$0 COP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SUCCESS SCREEN -->
+    <section id="screen-success" class="screen">
+      <div class="success-container">
+        <!-- Confetti canvas overlay -->
+        <canvas id="success-confetti" class="confetti-canvas"></canvas>
+
+        <div class="success-card glass-panel">
+          <div class="success-icon-badge">
+            <i data-lucide="check-circle-2"></i>
+          </div>
+          
+          <h2>¡Muchas gracias por tu compra!</h2>
+          <p>Tu orden ha sido procesada de manera exitosa y estamos listos para empezar a producir tus prendas personalizadas.</p>
+
+          <div class="order-receipt-box">
+            <h3>Detalle del Pedido</h3>
+            <div class="receipt-header">
+              <div>
+                <span class="receipt-label">Número de Orden</span>
+                <span class="receipt-val" id="receipt-order-id">#UC-48921</span>
+              </div>
+              <div>
+                <span class="receipt-label">Fecha</span>
+                <span class="receipt-val" id="receipt-date">22 Jun, 2026</span>
+              </div>
+            </div>
+
+            <div class="receipt-items" id="receipt-items-list">
+              <!-- Injected by JS -->
+            </div>
+
+            <div class="receipt-footer">
+              <div class="receipt-row">
+                <span>Total Pagado:</span>
+                <span class="total-val" id="receipt-total">$0 COP</span>
+              </div>
+              <div class="receipt-row ship-to">
+                <span>Enviar a:</span>
+                <span id="receipt-shipping-address">Calle 100 # 15-20, Bogotá</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="success-actions">
+            <button class="btn btn-primary btn-glow" id="btn-back-home">Seguir Comprando</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2026 UrbanCustom. Hecho con pasión por el diseño urbano.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/garments.js"></script>
+  <script src="js/canvas.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/success.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
